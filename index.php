@@ -1,99 +1,72 @@
-<?php
+<?php 
 
-define('EMPLOYEES_MAX_AMOUNT', 50);
-$name = [
-'Trey Crutchfield',
-'Camilla Wastling',
-'Lek Whitnell',
-'Alena Verissimo',
-'Mair Grason',
-'Melisandra Chatterton',
-'Mal Giorgione',
-'Lyndell Escudier',
-'Rosana Beidebeke',
-'Chryste Meni',
-'Saudra Freeberne',
-'Creighton Brightwell',
-'Marchelle Thiese',
-'Amelie Archard',
-'Kory Melburg',
-'Frances Grzelczyk',
-'Cordie Bragginton',
-'Alano Spuner',
-'Susanne Lomasney',
-'Jacquelin Mulrooney',
-];
+$n = 1000; 
+$count = 0; 
 
-$cities =[
-'Vyborg',
-'La Rochelle',
-'Wates',
-'Xindeng',
-'Giebułtów',
-'Wangchang',
-'Detchino',
-'Pasirhaur',
-'Indaial',
-'Canoinhas',
-];
-
-$namesMaxIndex = count($name) - 1;
-$citiesMaxIndex = count($cities) - 1;
-$employees = [];
-
-//$employeesMaxAmount = EMPLOYEES_MAX_AMOUNT; 
-
-$employeesAmount = rand(5, EMPLOYEES_MAX_AMOUNT);
-
-for($i = 1; $i <= $employeesAmount; $i++){
-    $nameIndex = rand(0, $namesMaxIndex);
-    $cityIndex = rand(0, $citiesMaxIndex);
-    
-    $employee = [
-        'id' => $i,
-        'name' => $name[$nameIndex],
-        'city' => $cities[$cityIndex]
-    ]; 
-    
-    $employees[] = $employee;
-   
+for($n = 1000; $n >= 50; $n /= 2){
+    $count++;
 }
 
+echo "#12: Iterations: {$count} => Result: {$n} <hr>"; 
+echo '#13: ';
+echo '<table>';
+$rand_i = rand(1,20);
+$rand_j = rand(1,20);
+for($i = 1; $i <= $rand_i; $i++){
+    echo '<tr>';
+    for($j = 1; $j <= $rand_j; $j++){
+        $randomR = dechex(rand(0, 255));
+        $randomG = dechex(rand(0, 255));
+        $randomB = dechex(rand(0, 255));
+        $color = "$randomR . $randomG . $randomB";
+        echo '<td bgcolor="#' . $color .'">' . $j * $i . '</td>'; 
+    }
+    echo '</tr>'; 
+}
+echo '</table> <hr>';
 
-?>
+// $names = ['Andy', 'Mike', 'Bob'];
+// var_dump(isset($names[4]));
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style type="text/css">
-        tr.even td {
-            background: #555;
-        }
-    </style>
-</head>
-<body>
-    <h1>Employees</h1>
-    <table border=1 width=100%>
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>City</td>
-        </tr>
-        <?php foreach ($employees as $i => $employee) : ?>
-            
-            <tr <?=$i % 2 == 0 ? "class='even'" : '' ?> >
-                <td><?=$employee['id'] ?></td>
-                <td><?=$employee['name'] ?></td>
-                <td><?=$employee['city'] ?></td>
-            </tr>
-          
-        <?php endforeach; ?>
-        
-    </table>
-    
-</body>
-</html>
+echo "#17: <br>";
+$months = ['Dec', 'Oct', 'Nov', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep']; 
+
+foreach($months as $month){
+    if($month == date('M')){
+        $month = "<b>{$month}</b>";
+    }
+    echo $month;
+    echo '<br>'; 
+}
+echo "<hr>";
+
+// chanding values in array
+// $numbers = range(1, 10); 
+
+// foreach($numbers as & $number){
+//     $number *= 2;
+// }
+// unset($number); 
+// var_dump($numbers);
+
+/*foreach($numbers as $i => $number){
+    $numbers[$i] *= 2; 
+    echo $numbers[$i]; 
+}*/
+
+echo "#23: <br>";
+
+$a = $b = 6556; // 2 + 5 + 6  652: 6, 60+5, 650+2
+$reversed_a = 0; 
+$sum = 0; 
+
+while ($a){
+    $r = $a % 10; //6, 5, 2 
+    $reversed_a = $reversed_a * 10 + $r; 
+    $sum += $r; 
+    $a /= 10; // 25.6, 2.5, 0.2
+    $a = (int) $a; //25, 2, 0
+}
+echo var_dump($b == $reversed_a); 
+
+echo "<hr>";
